@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<process version="7.0.000-RC1">
+<?xml version="1.0" encoding="UTF-8"?><process version="8.1.000">
   <context>
     <input/>
     <output/>
     <macros/>
   </context>
-  <operator activated="true" class="process" compatibility="7.0.000-RC1" expanded="true" name="Process">
+  <operator activated="true" class="process" compatibility="8.1.000" expanded="true" name="Process">
     <parameter key="logverbosity" value="init"/>
     <parameter key="random_seed" value="2001"/>
     <parameter key="send_mail" value="never"/>
@@ -13,7 +12,7 @@
     <parameter key="process_duration_for_mail" value="30"/>
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
-      <operator activated="true" class="read_csv" compatibility="7.0.000-RC1" expanded="true" height="68" name="Read training dataset" width="90" x="45" y="34">
+      <operator activated="true" class="read_csv" compatibility="8.1.000" expanded="true" height="68" name="Read training dataset" width="90" x="45" y="34">
         <parameter key="csv_file" value="train.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
@@ -34,6 +33,7 @@
         <parameter key="time_zone" value="SYSTEM"/>
         <parameter key="locale" value="English (United States)"/>
         <parameter key="encoding" value="windows-1250"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
         <list key="data_set_meta_data_information">
           <parameter key="0" value="PassengerId.true.nominal.id"/>
           <parameter key="1" value="Survived.true.binominal.label"/>
@@ -50,8 +50,9 @@
         </list>
         <parameter key="read_not_matching_values_as_missings" value="true"/>
         <parameter key="datamanagement" value="double_array"/>
+        <parameter key="data_management" value="auto"/>
       </operator>
-      <operator activated="true" class="read_csv" compatibility="7.0.000-RC1" expanded="true" height="68" name="Read test dataset" width="90" x="45" y="136">
+      <operator activated="true" class="read_csv" compatibility="8.1.000" expanded="true" height="68" name="Read test dataset" width="90" x="45" y="136">
         <parameter key="csv_file" value="test.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
@@ -72,6 +73,7 @@
         <parameter key="time_zone" value="SYSTEM"/>
         <parameter key="locale" value="English (United States)"/>
         <parameter key="encoding" value="windows-1250"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
         <list key="data_set_meta_data_information">
           <parameter key="0" value="PassengerId.true.polynominal.id"/>
           <parameter key="1" value="Pclass.true.polynominal.attribute"/>
@@ -87,8 +89,9 @@
         </list>
         <parameter key="read_not_matching_values_as_missings" value="true"/>
         <parameter key="datamanagement" value="double_array"/>
+        <parameter key="data_management" value="auto"/>
       </operator>
-      <operator activated="true" class="parallel_decision_tree" compatibility="7.0.000-RC1" expanded="true" height="82" name="Building a model" width="90" x="179" y="34">
+      <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="8.1.000" expanded="true" height="103" name="Building a model" width="90" x="179" y="34">
         <parameter key="criterion" value="gain_ratio"/>
         <parameter key="maximal_depth" value="20"/>
         <parameter key="apply_pruning" value="true"/>
@@ -99,11 +102,11 @@
         <parameter key="minimal_size_for_split" value="4"/>
         <parameter key="number_of_prepruning_alternatives" value="3"/>
       </operator>
-      <operator activated="true" class="apply_model" compatibility="7.0.000-RC1" expanded="true" height="82" name="Apply the model" width="90" x="313" y="85">
+      <operator activated="true" class="apply_model" compatibility="7.1.001" expanded="true" height="82" name="Apply the model" width="90" x="313" y="85">
         <list key="application_parameters"/>
         <parameter key="create_view" value="false"/>
       </operator>
-      <operator activated="true" class="select_attributes" compatibility="7.0.000-RC1" expanded="true" height="82" name="Select attributes to the Kaggle submission" width="90" x="447" y="34">
+      <operator activated="true" class="select_attributes" compatibility="8.1.000" expanded="true" height="82" name="Select attributes to the Kaggle submission" width="90" x="447" y="34">
         <parameter key="attribute_filter_type" value="subset"/>
         <parameter key="attribute" value=""/>
         <parameter key="attributes" value="prediction(Survived)|PassengerId"/>
@@ -117,13 +120,13 @@
         <parameter key="invert_selection" value="false"/>
         <parameter key="include_special_attributes" value="true"/>
       </operator>
-      <operator activated="true" class="rename" compatibility="7.0.000-RC1" expanded="true" height="82" name="Rename the predicted variable" width="90" x="581" y="34">
+      <operator activated="true" class="rename" compatibility="8.1.000" expanded="true" height="82" name="Rename the predicted variable" width="90" x="581" y="34">
         <parameter key="old_name" value="prediction(Survived)"/>
         <parameter key="new_name" value="Survived"/>
         <list key="rename_additional_attributes"/>
       </operator>
-      <operator activated="true" class="write_csv" compatibility="7.0.000-RC1" expanded="true" height="82" name="Write the result to CSV" width="90" x="715" y="34">
-        <parameter key="csv_file" value="C:\Users\István\Desktop\result.csv"/>
+      <operator activated="true" class="write_csv" compatibility="8.1.000" expanded="true" height="82" name="Write the result to CSV" width="90" x="715" y="34">
+        <parameter key="csv_file" value="C:\Users\noa\Dropbox\Learn\bme-dmp\2. hét\gyakorlat\practice\result.csv"/>
         <parameter key="column_separator" value=","/>
         <parameter key="write_attribute_names" value="true"/>
         <parameter key="quote_nominal_values" value="false"/>
