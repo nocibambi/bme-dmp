@@ -15,10 +15,10 @@
       <operator activated="false" class="retrieve" compatibility="8.1.000" expanded="true" height="68" name="Retrieve Titanic" width="90" x="45" y="34">
         <parameter key="repository_entry" value="//Samples/data/Titanic"/>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="8.1.000" expanded="true" height="68" name="Retrieve Iris" width="90" x="45" y="136">
+      <operator activated="true" class="retrieve" compatibility="8.1.000" expanded="true" height="68" name="Retrieve Iris" width="90" x="45" y="238">
         <parameter key="repository_entry" value="//Samples/data/Iris"/>
       </operator>
-      <operator activated="true" class="set_macro" compatibility="8.1.000" expanded="true" height="82" name="Set Macro (3)" width="90" x="179" y="238">
+      <operator activated="true" class="set_macro" compatibility="8.1.000" expanded="true" height="82" name="Set Macro (3)" width="90" x="447" y="238">
         <parameter key="macro" value="fraction"/>
         <parameter key="value" value="0.8"/>
       </operator>
@@ -37,7 +37,7 @@
         <parameter key="macro" value="fraction"/>
         <parameter key="value" value="0.3"/>
       </operator>
-      <operator activated="false" class="generate_macro" compatibility="8.1.000" expanded="true" height="68" name="Generate Macro" width="90" x="447" y="34">
+      <operator activated="true" class="generate_macro" compatibility="8.1.000" expanded="true" height="68" name="Generate Macro" width="90" x="447" y="34">
         <list key="function_descriptions">
           <parameter key="new size" value="round(eval(%{size}) * eval(%{fraction}))"/>
         </list>
