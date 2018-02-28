@@ -20,7 +20,7 @@ Ha sok ügyfelem van, szeretném tudni, hogy mennyire profitábilisak számomra.
  * Customer value: jelenlegi ügyfélérték, eddig mennyi értéket termelt számomra
  * Customer lifetime value: nemcsak a jelenig, hanem a jövőbeli potenciált is tartalmazza, ezen belül
 	* Value by product (adott termékre mennyi profitot termel)
-		* e.g. pr1 * 5 * 0.05 * fee
+		* e.g. PR1 * 5 * 0.05 * fee
 	* Affinitás modell
 		* Cross-sellinghez (keresztértékesítéshez) kapcsolódó termék (kóla a sült krumpli)
 		* Upsell: magasabb értékű terméket próbálok eladni (nagyonbb kóla)
@@ -34,7 +34,7 @@ Az adott ügyfél mekkora arányban hajlandó az ajánlatot megfizetni.
 ## Lineáris regresszió
 Célváltozó: Customer Lifetime Value (CLV)
 
-### 1 változó: életkor
+### Egy változó: életkor
 * Egy sor a táblázatban: 1 'pont' a függvényen
 * A CLV és a kor közötti lineáris összefüggést próbáljuk becsülni
 ```math
@@ -47,7 +47,7 @@ Egy olyan egyenest próbálunk találni, ami esetében a ponthalmaztól vett né
 
 ### Többváltozós lineáris regresszió
 ```math
-\bar{y} = \omega_o + \sum_i{\omega_i * age }
+\bar{y} = \omega_o + \sum_i{\omega_i * x_i }
 ```
 * Ez egy hipersíkot vázol fel [bár erről volt egy vita, hogy nem csak-e egy egyenest]
   - Hipersíkot leginkább lineáris szeparálás esetén használjuk, ahol egy osztályozási problémát oldunk meg.
@@ -67,7 +67,7 @@ Alapvetően a lineáris regresszió a négyzetes hibára optimalizál, viszont a
 #### 1. Négyzetes hiba
 MSE (mean squared error)
 ```math
-\frac{\sum{(y - \hat{y})^2}}{n}
+MSE = \frac{\sum_{i = 1}^n{(y_i - \hat{y}_i)^2}}{n}
 ```
 
  * A kiugró értékek túlságosan is befolyásolhatják
@@ -75,22 +75,19 @@ MSE (mean squared error)
  * Nem a célváltozó nagyságrendjében (értékkészletében) adja meg a hibát hanem annak négyzetében.
 
 
-#### 2. Abszolút hiba (?)
+#### 2. Átlagos abszolút eltérés
+MAD: Mean absolute deviation
 ```math
-\frac{|(y - \hat {y})^2|}{n}
+MAD = \frac{\sum_{i = 1}^n{|(y_i - \hat {y}_i)|}}{n}
 ```
-[Ez nem biztos, hogy így néz ki]
+[Itt volt még egy]
 
-#### 3. Abszolút különbség
-```math
-\frac{|(y - \hat{y})|} {n}
-```
 Ez akkor használható, ha nem az egyes sorok szerinti pontosság a fontos, hanem az összesített becsülhetőség. Ilyen példa az energia kereskedés, ahol elsősoraban a keresletet és a kínálatot kell kiegyenlíteni, és nem az egyiket kell növelni.
 
-#### 4. RMSE
+#### 3. RMSE
 Root mean square error
 ```math
-\sqrt{MSE}
+RMSE = \sqrt{MSE}
 ```
 
 ### Problémák a lineáris regresszióval
