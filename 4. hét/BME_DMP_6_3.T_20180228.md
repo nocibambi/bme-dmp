@@ -19,6 +19,7 @@ A képzett klaszterek leginkább gömbszerűek.
 
 ### 1. Hierarchikus
 Itt annyi klaszter lesz a végén, ahány sor van, és ezekből mi fogjuk kiválasztani a végső csoportosítást.
+* lánc formájú eredményeket fog gyártani
 
 #### Agglomeratív (egyesítő)
 * Kiinudlópont: Minden egyes sor vagy elem külön klaszterbe tartozik.
@@ -174,12 +175,12 @@ Az SSB/SST könyökpontjánál érdemes a k értékét meghatározni (inflexiós
 
 ### Elemszám
 * A klaszterezés nagyon eltérő elemszámú klasztereket tud alkotni
-### Davies Boulding index
+### Davies Bouldin index
 Visszamérési függvényt
 ```math
 R_{i,j} = \frac{S_i + S_j} {M_{i, j}}
 ```
-Where
+Whe re
 $ R_{i,j} $ = A klaszterezés 'jósága'
 $ {S_i}  $ = A klaszter belső 'szóródása'
 $ {M_{i, j}} $ = A klaszterek közötti távolság
