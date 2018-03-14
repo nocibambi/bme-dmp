@@ -6,7 +6,7 @@ Mikroszegmentáció: mintha az adott ügyfélre szóló ajánlatot tudna adni.  
 
 ## Klaszterezés
 * Viszonylag ritkábban használt
-* Az sorok felett olyan csoporotokat (klasztereket) alkossunk, amelyek viszonylag közel vannak egymáshoz, míg a csoportok távol vannak egymástól.
+* A sorok felett olyan csoporotokat (klasztereket) alkossunk, amelyek viszonylag közel vannak egymáshoz, míg a csoportok távol vannak egymástól.
 * Lehet persze az oszolopokon is klaszterezni.
 
 ## Főbb típusok
@@ -23,7 +23,7 @@ Itt annyi klaszter lesz a végén, ahány sor van, és ezekből mi fogjuk kivál
 
 #### Agglomeratív (egyesítő)
 * Kiinudlópont: Minden egyes sor vagy elem külön klaszterbe tartozik.
-* Iteratíve elkezdi csoportosítani őket amíg minden egyes elem egy klasztrbe tartozik.
+* Iteratíve elkezdi csoportosítani őket amíg minden egyes elem egy klaszterbe tartozik.
 
 #### Divizív (felosztó)
 * Kiinudlópont: Minden egyes sor vagy elem egy klaszterbe tartozik.
@@ -32,39 +32,42 @@ Itt annyi klaszter lesz a végén, ahány sor van, és ezekből mi fogjuk kivál
 ### 2. Partícionáló
 Meg kell adni neki, hogy hány darab klasztert szeretnénk létrehozni, és paraméterek alapján meg megpróbálja ezeket ráoptimalizálni.
 
-* K-means (k-közép): Átlag alapján alkot központokat (fiktív értékek) és ezek köré szervez egy klasztert.
-* K-medoid: adatpontokat használ a klaszterek közponjaként és a Manhattan-szabályt alkalmazza a távolság számításhoz (abszolút érték alapján).
+#### K-means (k-közép)
+Átlag alapján alkot központokat (fiktív értékek) és ezek köré szervez egy klasztert.
 
-### Távolságfüggvények
+#### K-medoid
+Adatpontokat használ a klaszterek közponjaként és a Manhattan-szabályt alkalmazza a távolság számításhoz (abszolút érték alapján).
+
+## Távolságfüggvények
 Ezek segítségével határozzák meg, hogy mennyire messzire vannak egymástól.
 
-#### 1. Euklideszi távolság
+### 1. Euklideszi távolság
 Négyzetösszegek gyöke: 'átló'.
 
 ```math
 d(i, j) = \sqrt{\sum_{i = 1}^{n}{(x_i - x_j)^2}}
 ```
 
-#### 2. Manhattan távolság
+### 2. Manhattan távolság
 Abszolut távolság: A vektorok értékének összege.
 
 ```math
 d(i, j) = \sum_{i = 1}^{n}{|(x_i - x_j)}|
 ```
 
-#### 3. Csebisev távolság
+### 3. Csebisev távolság
 A legnagyobb távolság.
 ```math
 d(i, j) = \max_i|(x_i - x_j)|
 ```
 
-#### Minkovszki távolság
+### Minkovszki távolság
 Általánosan ezeket **Minkovszki távolságnak** tekintjük.
 ```math
 d(i, j) = (\sum_{i = 1}^{n}{|x_i - x_j|^p} ) ^{1/p}
 ```
 
-###  Adatelőkészítési lépések
+##  Adatelőkészítési lépések
 1. **Hiányzó értékek**: Ezekre nem tudunk távolságfüggvényt számolni.
 
 2. Mérési szint, a **változók értékkészlete**: Nagyobb értékkészletű változók túldominálhatják a távolságfüggvényeket.
@@ -132,12 +135,12 @@ Olyan klasztereket próbálunk csinálni, amelyekben a klaszterek elemei közöt
 
 
 ### $ K $ értéke
-1. Hüvejkujjszabály: A sorok számának a felénél a gyökéből induljunk ki $k = \sqrt{\frac{n}{2}}$. Ez nagy adatnál azonban ugyancsak nagyon nagy lenne, ezért nem érdemes használni.
+1. Hüvejkujjszabály: A sorok számának a felének a gyökéből induljunk ki $k = \sqrt{\frac{n}{2}}$. Ez nagy adatnál azonban ugyancsak nagyon nagy lenne, ezért nem érdemes használni.
 2. Próbálgatással találjuk ki, az SSW-t próbáljuk minimalizálni (ez a javasolt).
 3. A partícionáló algoritmusokat meg lehet előzni egy hierarchikussal, ami már ad egy k értéket.
 
 ### Próbálgatás
-Klaszterezés nem felügyelt tanulás: itt nem tudjuk a célváltozót, ezért nem tudunk meghatározott választ adni erre.
+A klaszterezés nem felügyelt tanulás: itt nem tudjuk a célváltozót, ezért nem tudunk határozott választ adni erre.
 
 
 #### SSW: Klaszteren belüli távolság
@@ -149,7 +152,7 @@ SSW = \sum_{i = 1}^{k}\sum_{j = 1}^{n_j}(x_{ij} - \bar{x}_i)^2
 * $ k $ = Klaszterek száma
 * $ n_i $ = Klaszter tagjainak száma
 * $ x_i $ = Klaszter tagjainak átlaga
-* $ x_{ij} $ = Klaszterre vonatkozó mérés
+* $ x_{ij} $ = Adott klaszterre vonatkozó mérés
 
 
 #### SSB: klaszterek közötti  távolság
@@ -178,12 +181,12 @@ Az SSB/SST könyökpontjánál érdemes a k értékét meghatározni (inflexiós
 ### Davies Bouldin index
 Visszamérési függvényt
 ```math
-R_{i,j} = \frac{S_i + S_j} {M_{i, j}}
+R_{i,j} = \frac{S_i + S_j} {M_{i, j}} =
 ```
-Whe re
-$ R_{i,j} $ = A klaszterezés 'jósága'
-$ {S_i}  $ = A klaszter belső 'szóródása'
-$ {M_{i, j}} $ = A klaszterek közötti távolság
+Ahol:
+* $ R_{i,j} $ = A klaszterezés 'jósága'
+* $ {S_i}  $ = Az $i$ klaszter belső 'szóródása' (minél kisebb annál jobb)
+* $ {M_{i, j}} $ = A klaszterek közötti távolság (minél nagyobb, annál jobb)
 
 ```math
 DB =
@@ -224,4 +227,4 @@ Egy dimnezió
 * Lánc alakú klasztereket képez
 * Ha egy lépést megtettünk, az a lépés már nem fog változni. Nem biztos, hogy értelmesek lesznek a klaszterek.
 
-Klaszterezésnek és felügyelet nélküli tanításnak ez egy nagy problémája, ezért is ritka. Hüvejkujjszabályként, az a jó klaszterezés, amely eredményeként a klasztereknek maximum egy mondatos nevet tudunk adni. Ez azt sugallja, hogy valami erősen jellemző rájuk, tehát valószínüleg van értelmük.
+Klaszterezésnek és felügyelet nélküli tanításnak ez egy nagy problémája, ezért is ritka. Hüvejkujjszabályként, az a jó klaszterezés, amely eredményeként a klasztereknek maximum egy egymondatos nevet tudunk adni. Ez azt sugallja, hogy valami erősen jellemző rájuk, tehát valószínüleg van értelmük.
