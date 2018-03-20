@@ -23,12 +23,12 @@ Az új dimenziók az eredetiek lineáris transzormációi lesznek:
 1. dimenzió: $a_1 x_1  + b_1 x_2 $
 2. dimenzió: $a_2 x_1  + b_2 x_2 $
 
-Az újabb komponenesekkel egyre kevesebb varianciát tudunk befogni. Addig adjuk hozzá az új dimenziókat, amíg meg nem magyarázzuk a teljes varianciát, vagy annak egy általunk meghatározott részét.
+Az újabb komponenesekkel egyre több varianciát tudunk befogni. Addig adjuk hozzá az új dimenziókat, amíg meg nem magyarázzuk a teljes varianciát, vagy annak egy általunk meghatározott részét.
 
 ### Kombinálhatóság más modellekkel
 PCA segítségével át lehet formázni az adathalmazt, úgy, hogy jobban kedvezzen egy modelhez.
 
-1. Vizualizációhoz tudjuk használni amit pl klaszterezésnél segíthet minket.
+1. Vizualizációhoz tudjuk használni (pl klaszterezésnél segíthet minket).
 2. A PCA dimenzióhoz rendelem hozzá a korábban már definiált klasztereket (?).
 
 ### Probléma a PCA-va
@@ -89,7 +89,12 @@ Meghatározzuk, hogy melyik értéket próbáljuk elsősorban meghatározni
 #### Tévesztési mátrix
 Dimenziók
   * Valós értékek
-  * Előrejelzési értékek
+  * Előrejelzési értékek=
+
+Előrejelzési\Valós értékek| 1  | 0
+--------------------------|----|--
+ 1 | True positive  | False positive 
+ 0 | False negative | True negative
 
 Esetek
  1. True positive
@@ -100,7 +105,7 @@ Esetek
 A fontos belátás, hogy nem egyenrangúak a hibák egymással (leginkább alkalmazási szempontból). Például, nem mindegy, hogy hogyan értelmezzük, hogy adjunk-e hitelt, vagy tényleg beteg-e valaki, stb.
 
 #### A ROC görbe felépítése
-Tréning adathalmaz:  
+Tréning adathalmaz:
 Teszt adathalmaz: Az eredeti célváltozó mellé teszi a következőket:
  1. Becsült érték
  2. Confidenciát  [0,1] a primary outcome-hoz ($ P_0 $)
