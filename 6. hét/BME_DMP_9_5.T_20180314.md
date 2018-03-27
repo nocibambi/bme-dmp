@@ -1,3 +1,6 @@
+# 9. Óra
+Adatelemzési platformok, BME, 2018. Március 14., V. Elméleti óra.
+
 # Modellek visszamérésének hatékonysága
 
 ## Dimenziócsökkentés
@@ -93,7 +96,7 @@ Dimenziók
 
 Előrejelzési\Valós értékek| 1  | 0
 --------------------------|----|--
- 1 | True positive  | False positive 
+ 1 | True positive  | False positive
  0 | False negative | True negative
 
 Esetek
@@ -115,19 +118,21 @@ Sorbarendezi a sorokat, az alapján, hogy mennyire biztosan tudjuk az **1-es cé
 ### ROC görbe ábrázolása
 Kumulatív függvényt csinálunk
 
+
 #### Első lépés
 Konfidencia értékcsoport: [0, 1]
 1. Ezek közül kijelöljük a $ P_0 $-t 1 és 0.9 közötti konfidenciával megmagyarázó eseteket.
-2. Ábra felrajzolása
+2. Ábra felrajzolás
     - X tengely: az összes **valós $ P_1 $** közül hányan kerültek bele a fenti kritériumba
-     - Y tengely: a **valós $ P_0 $** hány százaléka került bele a fenti kritériumba
+    - Y tengely: a **valós $ P_0 $** hány százaléka került bele a fenti kritériumba
 
 Várhatóan a 'bal felső' sarokban lesznek a függvények.
-
 #### Következő lépés
 A 0.9 és 0.8 PC1 konfidenciájú esetekkel is megcsináljuk. Majd a következő kategóriával, és így tovább.
 
 Nem szigorúan, de monoton a görbe.
+- X tengely: False positive-ok aránya
+- Y tengely: 1-esek aránya
 
 ### Speciális Esetek
 A ROC görbe ezek alapján

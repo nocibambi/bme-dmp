@@ -1,3 +1,6 @@
+# 8. Óra
+Adatelemzési platformok, BME, 2018. Március 13., IV. Elméleti óra.
+
 # Múltkori gyakorlathoz
 ## Loop operator
  * Loop operator, egy makróban tartja, hogy épp hol jár.

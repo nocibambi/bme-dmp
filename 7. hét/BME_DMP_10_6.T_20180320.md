@@ -1,5 +1,5 @@
 # 10. Óra
-Adatelemzési platformok, BME, 2018. Március 20., VI. Gyakorlati óra.
+Adatelemzési platformok, BME, 2018. Március 20., VI. Elméleti óra.
 
 # Visszamérési Függvények (folytatás)
 ## Response chart (illetve cumulative response chart)
@@ -88,6 +88,7 @@ Classification and regression tree.
 \begin{gathered}
 P_L = \frac {t_L sorok} {\sum{sor}} \quad
 P_R = \frac {t_R sorok} {\sum{sor}} \\ \\
+
 P(j|t_L) = \frac {sor_j t_L} {\sum{sor}} \quad
 P(j|t_R) = \frac {sor_j t_R} {\sum{sor}}
 \end{gathered}
