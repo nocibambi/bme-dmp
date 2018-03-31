@@ -75,7 +75,7 @@ d(i, j) = (\sum_{i = 1}^{n}{|x_i - x_j|^p} ) ^{1/p}
 
 3. **Kategória változók**: Nem lehet értelmezni a távolságot a különböző dimenziókban.
     1. **Bináris** változókkal nincs probléma.
-    2. **Dummy** változó képzés:
+    2. **Dummy** változó képzés egy leghetséges megoldás, de ennek is vannak problémái:
         1. Túl sok új változót kreálhat
         2. A sok értékkel bíró változók túldominálhatják
     3. A **távolságfüggvényt** kell módosítani
