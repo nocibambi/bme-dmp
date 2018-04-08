@@ -1,4 +1,4 @@
-# 6. Óra
+# 7. Óra
 Adatelemzési platformok, BME, 2018. Február 28., IV. Gyakorlati óra.
 
 ## Telecom adatelemzési probléma
