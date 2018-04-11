@@ -13,7 +13,7 @@
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
       <operator activated="true" class="read_csv" compatibility="8.1.001" expanded="true" height="68" name="Read CSV" width="90" x="45" y="85">
-        <parameter key="csv_file" value="/home/andras/Dropbox/Learn/bme-dmp/5. hét/Gyakorlat/Adatok/telco.txt"/>
+        <parameter key="csv_file" value="/home/andras/Dropbox/Learn/bme-dmp/5. hét/Gyakorlat/Adatok/telco_samp_w_churn.csv"/>
         <parameter key="column_separators" value=";"/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -260,7 +260,7 @@
       <operator activated="false" class="model_simulator:lift_chart" compatibility="8.1.001" expanded="true" height="82" name="Lift Chart (Simple)" width="90" x="380" y="595">
         <parameter key="target class" value="1"/>
       </operator>
-      <operator activated="false" class="detect_outlier_cof" compatibility="8.1.001" expanded="true" height="82" name="Detect Outlier (COF)" width="90" x="45" y="391">
+      <operator activated="false" class="detect_outlier_cof" compatibility="8.1.001" expanded="true" height="82" name="Detect Outlier (COF)" width="90" x="179" y="289">
         <parameter key="number_of_neighbors" value="7"/>
         <parameter key="number_of_class_outliers" value="10"/>
         <parameter key="measure_types" value="MixedMeasures"/>
@@ -286,11 +286,6 @@
       <operator activated="false" class="detect_outlier_densities" compatibility="8.1.001" expanded="true" height="82" name="Detect Outlier (Densities)" width="90" x="45" y="187">
         <parameter key="distance" value="4.0"/>
         <parameter key="proportion" value="0.8"/>
-        <parameter key="distance_function" value="euclidian distance"/>
-      </operator>
-      <operator activated="false" class="detect_outlier_distances" compatibility="8.1.001" expanded="true" height="82" name="Detect Outlier (Distances)" width="90" x="246" y="340">
-        <parameter key="number_of_neighbors" value="10"/>
-        <parameter key="number_of_outliers" value="10"/>
         <parameter key="distance_function" value="euclidian distance"/>
       </operator>
       <operator activated="true" class="subprocess" compatibility="8.1.001" expanded="true" height="82" name="Data Preparation" width="90" x="179" y="34">
@@ -362,8 +357,13 @@
           <portSpacing port="sink_out 2" spacing="0"/>
         </process>
       </operator>
-      <operator activated="false" class="multiply" compatibility="8.1.001" expanded="true" height="82" name="Multiply (2)" width="90" x="380" y="238"/>
-      <operator activated="true" class="subprocess" compatibility="8.1.001" expanded="true" height="124" name="Outlier Detection" width="90" x="313" y="34">
+      <operator activated="true" class="multiply" compatibility="8.1.001" expanded="true" height="103" name="Multiply (2)" width="90" x="313" y="34"/>
+      <operator activated="true" class="detect_outlier_distances" compatibility="8.1.001" expanded="true" height="82" name="Detect Outlier (Distances)" width="90" x="447" y="136">
+        <parameter key="number_of_neighbors" value="10"/>
+        <parameter key="number_of_outliers" value="10"/>
+        <parameter key="distance_function" value="euclidian distance"/>
+      </operator>
+      <operator activated="true" class="subprocess" compatibility="8.1.001" expanded="true" height="103" name="Outlier Detection" width="90" x="447" y="34">
         <process expanded="true">
           <operator activated="true" class="multiply" compatibility="8.1.001" expanded="true" height="124" name="Multiply (8)" width="90" x="45" y="187"/>
           <operator activated="true" class="cross_distances" compatibility="8.1.001" expanded="true" height="103" name="Cross Distances (5)" width="90" x="179" y="85">
@@ -462,10 +462,9 @@
           <portSpacing port="sink_out 1" spacing="0"/>
           <portSpacing port="sink_out 2" spacing="0"/>
           <portSpacing port="sink_out 3" spacing="0"/>
-          <portSpacing port="sink_out 4" spacing="0"/>
         </process>
       </operator>
-      <operator activated="false" class="split_validation" compatibility="8.1.001" expanded="true" height="124" name="Validation (2)" width="90" x="514" y="136">
+      <operator activated="false" class="split_validation" compatibility="8.1.001" expanded="true" height="124" name="Validation (2)" width="90" x="313" y="238">
         <parameter key="create_complete_model" value="false"/>
         <parameter key="split" value="relative"/>
         <parameter key="split_ratio" value="0.7"/>
@@ -563,13 +562,17 @@
       <connect from_op="Validation" from_port="model" to_op="Multiply" to_port="input"/>
       <connect from_op="Multiply" from_port="output 1" to_op="Lift Chart (Simple)" to_port="model"/>
       <connect from_op="Recall" from_port="result" to_op="Lift Chart (Simple)" to_port="test data"/>
-      <connect from_op="Data Preparation" from_port="out 1" to_op="Outlier Detection" to_port="in 1"/>
+      <connect from_op="Data Preparation" from_port="out 1" to_op="Multiply (2)" to_port="input"/>
+      <connect from_op="Multiply (2)" from_port="output 1" to_op="Outlier Detection" to_port="in 1"/>
+      <connect from_op="Multiply (2)" from_port="output 2" to_op="Detect Outlier (Distances)" to_port="example set input"/>
+      <connect from_op="Detect Outlier (Distances)" from_port="example set output" to_port="result 3"/>
       <connect from_op="Outlier Detection" from_port="out 1" to_port="result 1"/>
       <connect from_op="Outlier Detection" from_port="out 2" to_port="result 2"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
       <portSpacing port="sink_result 3" spacing="0"/>
+      <portSpacing port="sink_result 4" spacing="0"/>
       <description align="center" color="yellow" colored="false" height="293" resized="true" width="474" x="27" y="444">Original processes</description>
     </process>
   </operator>
