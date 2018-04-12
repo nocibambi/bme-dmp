@@ -14,6 +14,19 @@ Folytasd az órán elkezdett feladat megoldását.
 
 Küldd át a processzed és pár soros leírást arról, hogy mit-miért-milyen eredménnyel csináltál a következő címre.
 
+# Todo
+1. Outlier kezelés: Találni egy működő fajtát és alkalmazni
+2. Kategória változók
+  1. átnézni őket
+  2. utánaolvasni, hogy mit kell csinálni
+  3. binarizálni/kizárni őket
+4. normalizálni az adatokat
+5. Alkalmazni a loop operátort az optimális k megtalálására.
+6. Használin az optimize Grid operátort
+
+
+
+
 # Elemzés leírása
 ## 0. KNN kezdeti lefuttatása
 ### k=5
@@ -30,18 +43,13 @@ Túlnyomorészt False Negatívakat produkál.
 A legtöbb beápített Outlier process nagyon hosszú ideig tartott lefutni.
 ### 1. Densities (DB-Outlier)
 Ez gyorsabban lefutott, de különböző paraméter-kombinációkra minden sort outlierként kezel.
-
-
-
 2. Class Outlier Factors (COF)
 3. Local Outlier Factors (LOF)
 4. Distances
 
-
 [] Visualization:
 [] Interquartilis
 [] Mean +- 3 standard deviation
-
 
 ## 2. Kategória változók kezelése
 Az alábbi kategória változókkal akarunk foglalkozni:

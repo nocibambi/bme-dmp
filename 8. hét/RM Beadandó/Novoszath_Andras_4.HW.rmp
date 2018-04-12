@@ -12,8 +12,8 @@
     <parameter key="process_duration_for_mail" value="30"/>
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
-      <operator activated="true" class="read_csv" compatibility="8.1.001" expanded="true" height="68" name="Read CSV" width="90" x="45" y="85">
-        <parameter key="csv_file" value="/home/andras/Dropbox/Learn/bme-dmp/5. hét/Gyakorlat/Adatok/telco_samp_w_churn.csv"/>
+      <operator activated="true" class="read_csv" compatibility="8.1.001" expanded="true" height="68" name="Read CSV" width="90" x="45" y="34">
+        <parameter key="csv_file" value="C:\Users\noa\Dropbox\Learn\bme-dmp\8. hét\RM Beadandó\telco_samp_w_churn.csv"/>
         <parameter key="column_separators" value=";"/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -99,196 +99,7 @@
         <parameter key="datamanagement" value="double_array"/>
         <parameter key="data_management" value="auto"/>
       </operator>
-      <operator activated="false" class="split_validation" compatibility="8.1.001" expanded="true" height="124" name="Validation" width="90" x="45" y="544">
-        <parameter key="create_complete_model" value="false"/>
-        <parameter key="split" value="relative"/>
-        <parameter key="split_ratio" value="0.7"/>
-        <parameter key="training_set_size" value="100"/>
-        <parameter key="test_set_size" value="-1"/>
-        <parameter key="sampling_type" value="automatic"/>
-        <parameter key="use_local_random_seed" value="false"/>
-        <parameter key="local_random_seed" value="1992"/>
-        <process expanded="true">
-          <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="8.1.001" expanded="true" height="103" name="Decision Tree" width="90" x="112" y="34">
-            <parameter key="criterion" value="gini_index"/>
-            <parameter key="maximal_depth" value="7"/>
-            <parameter key="apply_pruning" value="true"/>
-            <parameter key="confidence" value="0.35"/>
-            <parameter key="apply_prepruning" value="false"/>
-            <parameter key="minimal_gain" value="0.1"/>
-            <parameter key="minimal_leaf_size" value="2"/>
-            <parameter key="minimal_size_for_split" value="4"/>
-            <parameter key="number_of_prepruning_alternatives" value="3"/>
-          </operator>
-          <connect from_port="training" to_op="Decision Tree" to_port="training set"/>
-          <connect from_op="Decision Tree" from_port="model" to_port="model"/>
-          <portSpacing port="source_training" spacing="0"/>
-          <portSpacing port="sink_model" spacing="0"/>
-          <portSpacing port="sink_through 1" spacing="0"/>
-        </process>
-        <process expanded="true">
-          <operator activated="true" class="remember" compatibility="8.1.001" expanded="true" height="68" name="Remember" width="90" x="45" y="85">
-            <parameter key="name" value="test_dataset"/>
-            <parameter key="io_object" value="ExampleSet"/>
-            <parameter key="store_which" value="1"/>
-            <parameter key="remove_from_process" value="true"/>
-          </operator>
-          <operator activated="true" class="apply_model" compatibility="8.1.001" expanded="true" height="82" name="Apply Model" width="90" x="179" y="34">
-            <list key="application_parameters"/>
-            <parameter key="create_view" value="false"/>
-          </operator>
-          <operator activated="true" class="performance_binominal_classification" compatibility="8.1.001" expanded="true" height="82" name="Performance" width="90" x="313" y="34">
-            <parameter key="main_criterion" value="first"/>
-            <parameter key="accuracy" value="true"/>
-            <parameter key="classification_error" value="false"/>
-            <parameter key="kappa" value="false"/>
-            <parameter key="AUC (optimistic)" value="false"/>
-            <parameter key="AUC" value="true"/>
-            <parameter key="AUC (pessimistic)" value="false"/>
-            <parameter key="precision" value="false"/>
-            <parameter key="recall" value="false"/>
-            <parameter key="lift" value="false"/>
-            <parameter key="fallout" value="false"/>
-            <parameter key="f_measure" value="false"/>
-            <parameter key="false_positive" value="false"/>
-            <parameter key="false_negative" value="false"/>
-            <parameter key="true_positive" value="false"/>
-            <parameter key="true_negative" value="false"/>
-            <parameter key="sensitivity" value="false"/>
-            <parameter key="specificity" value="false"/>
-            <parameter key="youden" value="false"/>
-            <parameter key="positive_predictive_value" value="false"/>
-            <parameter key="negative_predictive_value" value="false"/>
-            <parameter key="psep" value="false"/>
-            <parameter key="skip_undefined_labels" value="true"/>
-            <parameter key="use_example_weights" value="true"/>
-          </operator>
-          <connect from_port="model" to_op="Apply Model" to_port="model"/>
-          <connect from_port="test set" to_op="Remember" to_port="store"/>
-          <connect from_op="Remember" from_port="stored" to_op="Apply Model" to_port="unlabelled data"/>
-          <connect from_op="Apply Model" from_port="labelled data" to_op="Performance" to_port="labelled data"/>
-          <connect from_op="Performance" from_port="performance" to_port="averagable 1"/>
-          <portSpacing port="source_model" spacing="0"/>
-          <portSpacing port="source_test set" spacing="0"/>
-          <portSpacing port="source_through 1" spacing="0"/>
-          <portSpacing port="sink_averagable 1" spacing="0"/>
-          <portSpacing port="sink_averagable 2" spacing="0"/>
-        </process>
-      </operator>
-      <operator activated="false" class="compare_rocs" compatibility="8.1.001" expanded="true" height="82" name="Compare ROCs" width="90" x="514" y="289">
-        <parameter key="number_of_folds" value="10"/>
-        <parameter key="split_ratio" value="0.7"/>
-        <parameter key="sampling_type" value="stratified sampling"/>
-        <parameter key="use_local_random_seed" value="false"/>
-        <parameter key="local_random_seed" value="1992"/>
-        <parameter key="use_example_weights" value="true"/>
-        <parameter key="roc_bias" value="optimistic"/>
-        <process expanded="true">
-          <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="8.1.001" expanded="true" height="103" name="Decision Tree (2)" width="90" x="313" y="34">
-            <parameter key="criterion" value="gini_index"/>
-            <parameter key="maximal_depth" value="7"/>
-            <parameter key="apply_pruning" value="true"/>
-            <parameter key="confidence" value="0.35"/>
-            <parameter key="apply_prepruning" value="false"/>
-            <parameter key="minimal_gain" value="0.1"/>
-            <parameter key="minimal_leaf_size" value="2"/>
-            <parameter key="minimal_size_for_split" value="4"/>
-            <parameter key="number_of_prepruning_alternatives" value="3"/>
-          </operator>
-          <operator activated="true" class="h2o:logistic_regression" compatibility="7.6.001" expanded="true" height="124" name="Logistic Regression" width="90" x="313" y="136">
-            <parameter key="solver" value="AUTO"/>
-            <parameter key="reproducible" value="false"/>
-            <parameter key="maximum_number_of_threads" value="4"/>
-            <parameter key="use_regularization" value="false"/>
-            <parameter key="lambda_search" value="false"/>
-            <parameter key="number_of_lambdas" value="0"/>
-            <parameter key="lambda_min_ratio" value="0.0"/>
-            <parameter key="early_stopping" value="true"/>
-            <parameter key="stopping_rounds" value="3"/>
-            <parameter key="stopping_tolerance" value="0.001"/>
-            <parameter key="standardize" value="true"/>
-            <parameter key="non-negative_coefficients" value="false"/>
-            <parameter key="add_intercept" value="true"/>
-            <parameter key="compute_p-values" value="true"/>
-            <parameter key="remove_collinear_columns" value="true"/>
-            <parameter key="missing_values_handling" value="MeanImputation"/>
-            <parameter key="max_iterations" value="0"/>
-            <parameter key="max_runtime_seconds" value="0"/>
-          </operator>
-          <operator activated="true" class="k_nn" compatibility="8.1.001" expanded="true" height="82" name="k-NN" width="90" x="313" y="340">
-            <parameter key="k" value="5"/>
-            <parameter key="weighted_vote" value="false"/>
-            <parameter key="measure_types" value="MixedMeasures"/>
-            <parameter key="mixed_measure" value="MixedEuclideanDistance"/>
-            <parameter key="nominal_measure" value="NominalDistance"/>
-            <parameter key="numerical_measure" value="EuclideanDistance"/>
-            <parameter key="divergence" value="GeneralizedIDivergence"/>
-            <parameter key="kernel_type" value="radial"/>
-            <parameter key="kernel_gamma" value="1.0"/>
-            <parameter key="kernel_sigma1" value="1.0"/>
-            <parameter key="kernel_sigma2" value="0.0"/>
-            <parameter key="kernel_sigma3" value="2.0"/>
-            <parameter key="kernel_degree" value="3.0"/>
-            <parameter key="kernel_shift" value="1.0"/>
-            <parameter key="kernel_a" value="1.0"/>
-            <parameter key="kernel_b" value="0.0"/>
-          </operator>
-          <connect from_port="train 1" to_op="Decision Tree (2)" to_port="training set"/>
-          <connect from_port="train 2" to_op="Logistic Regression" to_port="training set"/>
-          <connect from_port="train 3" to_op="k-NN" to_port="training set"/>
-          <connect from_op="Decision Tree (2)" from_port="model" to_port="model 1"/>
-          <connect from_op="Logistic Regression" from_port="model" to_port="model 2"/>
-          <connect from_op="k-NN" from_port="model" to_port="model 3"/>
-          <portSpacing port="source_train 1" spacing="0"/>
-          <portSpacing port="source_train 2" spacing="0"/>
-          <portSpacing port="source_train 3" spacing="0"/>
-          <portSpacing port="source_train 4" spacing="0"/>
-          <portSpacing port="sink_model 1" spacing="0"/>
-          <portSpacing port="sink_model 2" spacing="0"/>
-          <portSpacing port="sink_model 3" spacing="0"/>
-          <portSpacing port="sink_model 4" spacing="0"/>
-        </process>
-      </operator>
-      <operator activated="false" class="multiply" compatibility="8.1.001" expanded="true" height="82" name="Multiply" width="90" x="246" y="493">
-        <description align="center" color="transparent" colored="false" width="126">Type your comment</description>
-      </operator>
-      <operator activated="false" class="recall" compatibility="8.1.001" expanded="true" height="68" name="Recall" width="90" x="246" y="646">
-        <parameter key="name" value="test_dataset"/>
-        <parameter key="io_object" value="ExampleSet"/>
-        <parameter key="remove_from_store" value="true"/>
-      </operator>
-      <operator activated="false" class="model_simulator:lift_chart" compatibility="8.1.001" expanded="true" height="82" name="Lift Chart (Simple)" width="90" x="380" y="595">
-        <parameter key="target class" value="1"/>
-      </operator>
-      <operator activated="false" class="detect_outlier_cof" compatibility="8.1.001" expanded="true" height="82" name="Detect Outlier (COF)" width="90" x="179" y="289">
-        <parameter key="number_of_neighbors" value="7"/>
-        <parameter key="number_of_class_outliers" value="10"/>
-        <parameter key="measure_types" value="MixedMeasures"/>
-        <parameter key="mixed_measure" value="MixedEuclideanDistance"/>
-        <parameter key="nominal_measure" value="NominalDistance"/>
-        <parameter key="numerical_measure" value="EuclideanDistance"/>
-        <parameter key="divergence" value="GeneralizedIDivergence"/>
-        <parameter key="kernel_type" value="radial"/>
-        <parameter key="kernel_gamma" value="1.0"/>
-        <parameter key="kernel_sigma1" value="1.0"/>
-        <parameter key="kernel_sigma2" value="0.0"/>
-        <parameter key="kernel_sigma3" value="2.0"/>
-        <parameter key="kernel_degree" value="3.0"/>
-        <parameter key="kernel_shift" value="1.0"/>
-        <parameter key="kernel_a" value="1.0"/>
-        <parameter key="kernel_b" value="0.0"/>
-      </operator>
-      <operator activated="false" class="detect_outlier_lof" compatibility="8.1.001" expanded="true" height="82" name="Detect Outlier (LOF)" width="90" x="45" y="289">
-        <parameter key="minimal_points_lower_bound" value="10"/>
-        <parameter key="minimal_points_upper_bound" value="20"/>
-        <parameter key="distance_function" value="euclidian distance"/>
-      </operator>
-      <operator activated="false" class="detect_outlier_densities" compatibility="8.1.001" expanded="true" height="82" name="Detect Outlier (Densities)" width="90" x="45" y="187">
-        <parameter key="distance" value="4.0"/>
-        <parameter key="proportion" value="0.8"/>
-        <parameter key="distance_function" value="euclidian distance"/>
-      </operator>
-      <operator activated="true" class="subprocess" compatibility="8.1.001" expanded="true" height="82" name="Data Preparation" width="90" x="179" y="34">
+      <operator activated="true" class="subprocess" compatibility="8.1.001" expanded="true" height="82" name="Data Preparation" width="90" x="45" y="238">
         <process expanded="true">
           <operator activated="true" class="set_role" compatibility="8.1.001" expanded="true" height="82" name="Set Role" width="90" x="45" y="34">
             <parameter key="attribute_name" value="Cust_ID"/>
@@ -309,6 +120,24 @@
             <parameter key="invert_selection" value="true"/>
             <parameter key="include_special_attributes" value="false"/>
           </operator>
+          <operator activated="false" class="nominal_to_binominal" compatibility="8.1.001" expanded="true" height="103" name="Nominal to Binominal" width="90" x="246" y="187">
+            <parameter key="return_preprocessing_model" value="false"/>
+            <parameter key="create_view" value="false"/>
+            <parameter key="attribute_filter_type" value="all"/>
+            <parameter key="attribute" value=""/>
+            <parameter key="attributes" value=""/>
+            <parameter key="use_except_expression" value="false"/>
+            <parameter key="value_type" value="nominal"/>
+            <parameter key="use_value_type_exception" value="false"/>
+            <parameter key="except_value_type" value="file_path"/>
+            <parameter key="block_type" value="single_value"/>
+            <parameter key="use_block_type_exception" value="false"/>
+            <parameter key="except_block_type" value="single_value"/>
+            <parameter key="invert_selection" value="false"/>
+            <parameter key="include_special_attributes" value="false"/>
+            <parameter key="transform_binominal" value="false"/>
+            <parameter key="use_underscore_in_name" value="false"/>
+          </operator>
           <operator activated="true" class="normalize" compatibility="7.5.003" expanded="true" height="103" name="Normalize" width="90" x="313" y="34">
             <parameter key="return_preprocessing_model" value="false"/>
             <parameter key="create_view" value="false"/>
@@ -323,7 +152,7 @@
             <parameter key="use_block_type_exception" value="false"/>
             <parameter key="except_block_type" value="value_series_end"/>
             <parameter key="invert_selection" value="false"/>
-            <parameter key="include_special_attributes" value="false"/>
+            <parameter key="include_special_attributes" value="true"/>
             <parameter key="method" value="range transformation"/>
             <parameter key="min" value="0.0"/>
             <parameter key="max" value="1.0"/>
@@ -357,13 +186,7 @@
           <portSpacing port="sink_out 2" spacing="0"/>
         </process>
       </operator>
-      <operator activated="true" class="multiply" compatibility="8.1.001" expanded="true" height="103" name="Multiply (2)" width="90" x="313" y="34"/>
-      <operator activated="true" class="detect_outlier_distances" compatibility="8.1.001" expanded="true" height="82" name="Detect Outlier (Distances)" width="90" x="447" y="136">
-        <parameter key="number_of_neighbors" value="10"/>
-        <parameter key="number_of_outliers" value="10"/>
-        <parameter key="distance_function" value="euclidian distance"/>
-      </operator>
-      <operator activated="true" class="subprocess" compatibility="8.1.001" expanded="true" height="103" name="Outlier Detection" width="90" x="447" y="34">
+      <operator activated="true" class="subprocess" compatibility="8.1.001" expanded="true" height="82" name="Outlier Detection" width="90" x="179" y="238">
         <process expanded="true">
           <operator activated="true" class="multiply" compatibility="8.1.001" expanded="true" height="124" name="Multiply (8)" width="90" x="45" y="187"/>
           <operator activated="true" class="cross_distances" compatibility="8.1.001" expanded="true" height="103" name="Cross Distances (5)" width="90" x="179" y="85">
@@ -409,14 +232,14 @@
             <parameter key="only_distinct" value="false"/>
             <parameter key="ignore_missings" value="true"/>
           </operator>
-          <operator activated="true" class="sort" compatibility="8.1.001" expanded="true" height="82" name="Sort" width="90" x="447" y="85">
+          <operator activated="true" class="sort" compatibility="8.1.001" expanded="true" height="82" name="Sort" width="90" x="447" y="34">
             <parameter key="attribute_name" value="average(distance)"/>
             <parameter key="sorting_direction" value="decreasing"/>
           </operator>
-          <operator activated="true" class="filter_examples" compatibility="8.1.001" expanded="true" height="103" name="Filter Examples (2)" width="90" x="581" y="85">
+          <operator activated="true" class="filter_examples" compatibility="8.1.001" expanded="true" height="103" name="Filter Examples (3)" width="90" x="581" y="34">
             <parameter key="parameter_expression" value=""/>
             <parameter key="condition_class" value="custom_filters"/>
-            <parameter key="invert_filter" value="false"/>
+            <parameter key="invert_filter" value="true"/>
             <list key="filters_list">
               <parameter key="filters_entry_key" value="average(distance).lt.0\.8"/>
             </list>
@@ -437,7 +260,7 @@
             <parameter key="invert_selection" value="false"/>
             <parameter key="include_special_attributes" value="false"/>
           </operator>
-          <operator activated="true" class="concurrency:join" compatibility="8.1.001" expanded="true" height="82" name="Join" width="90" x="782" y="238">
+          <operator activated="true" class="concurrency:join" compatibility="8.1.001" expanded="true" height="82" name="Join" width="90" x="849" y="136">
             <parameter key="remove_double_attributes" value="true"/>
             <parameter key="join_type" value="inner"/>
             <parameter key="use_id_attribute_as_key" value="false"/>
@@ -452,41 +275,37 @@
           <connect from_op="Multiply (8)" from_port="output 3" to_op="Join" to_port="left"/>
           <connect from_op="Cross Distances (5)" from_port="result set" to_op="Aggregate (5)" to_port="example set input"/>
           <connect from_op="Aggregate (5)" from_port="example set output" to_op="Sort" to_port="example set input"/>
-          <connect from_op="Sort" from_port="example set output" to_op="Filter Examples (2)" to_port="example set input"/>
-          <connect from_op="Filter Examples (2)" from_port="example set output" to_op="Select Attributes (8)" to_port="example set input"/>
-          <connect from_op="Filter Examples (2)" from_port="original" to_port="out 2"/>
+          <connect from_op="Sort" from_port="example set output" to_op="Filter Examples (3)" to_port="example set input"/>
+          <connect from_op="Filter Examples (3)" from_port="example set output" to_op="Select Attributes (8)" to_port="example set input"/>
           <connect from_op="Select Attributes (8)" from_port="example set output" to_op="Join" to_port="right"/>
           <connect from_op="Join" from_port="join" to_port="out 1"/>
           <portSpacing port="source_in 1" spacing="0"/>
           <portSpacing port="source_in 2" spacing="0"/>
           <portSpacing port="sink_out 1" spacing="0"/>
           <portSpacing port="sink_out 2" spacing="0"/>
-          <portSpacing port="sink_out 3" spacing="0"/>
         </process>
       </operator>
-      <operator activated="false" class="split_validation" compatibility="8.1.001" expanded="true" height="124" name="Validation (2)" width="90" x="313" y="238">
-        <parameter key="create_complete_model" value="false"/>
-        <parameter key="split" value="relative"/>
-        <parameter key="split_ratio" value="0.7"/>
-        <parameter key="training_set_size" value="100"/>
-        <parameter key="test_set_size" value="-1"/>
+      <operator activated="true" class="split_data" compatibility="8.1.001" expanded="true" height="103" name="Split Data" width="90" x="313" y="238">
+        <enumeration key="partitions">
+          <parameter key="ratio" value="0.8"/>
+          <parameter key="ratio" value="0.2"/>
+        </enumeration>
         <parameter key="sampling_type" value="automatic"/>
-        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="use_local_random_seed" value="true"/>
         <parameter key="local_random_seed" value="1992"/>
+      </operator>
+      <operator activated="true" class="concurrency:optimize_parameters_grid" compatibility="8.1.001" expanded="true" height="145" name="Optimize Parameters (Grid)" width="90" x="447" y="136">
+        <list key="parameters">
+          <parameter key="k-NN (2).k" value="[1.0;300;300;linear]"/>
+        </list>
+        <parameter key="error_handling" value="fail on error"/>
+        <parameter key="log_performance" value="true"/>
+        <parameter key="log_all_criteria" value="false"/>
+        <parameter key="synchronize" value="false"/>
+        <parameter key="enable_parallel_execution" value="true"/>
         <process expanded="true">
-          <operator activated="false" class="concurrency:parallel_decision_tree" compatibility="8.1.001" expanded="true" height="103" name="Decision Tree (3)" width="90" x="112" y="238">
-            <parameter key="criterion" value="gini_index"/>
-            <parameter key="maximal_depth" value="7"/>
-            <parameter key="apply_pruning" value="true"/>
-            <parameter key="confidence" value="0.35"/>
-            <parameter key="apply_prepruning" value="false"/>
-            <parameter key="minimal_gain" value="0.1"/>
-            <parameter key="minimal_leaf_size" value="2"/>
-            <parameter key="minimal_size_for_split" value="4"/>
-            <parameter key="number_of_prepruning_alternatives" value="3"/>
-          </operator>
           <operator activated="true" class="k_nn" compatibility="8.1.001" expanded="true" height="82" name="k-NN (2)" width="90" x="112" y="34">
-            <parameter key="k" value="10"/>
+            <parameter key="k" value="20"/>
             <parameter key="weighted_vote" value="false"/>
             <parameter key="measure_types" value="MixedMeasures"/>
             <parameter key="mixed_measure" value="MixedEuclideanDistance"/>
@@ -503,25 +322,12 @@
             <parameter key="kernel_a" value="1.0"/>
             <parameter key="kernel_b" value="0.0"/>
           </operator>
-          <connect from_port="training" to_op="k-NN (2)" to_port="training set"/>
-          <connect from_op="k-NN (2)" from_port="model" to_port="model"/>
-          <portSpacing port="source_training" spacing="0"/>
-          <portSpacing port="sink_model" spacing="0"/>
-          <portSpacing port="sink_through 1" spacing="0"/>
-        </process>
-        <process expanded="true">
-          <operator activated="true" class="remember" compatibility="8.1.001" expanded="true" height="68" name="Remember (2)" width="90" x="45" y="85">
-            <parameter key="name" value="test_dataset"/>
-            <parameter key="io_object" value="ExampleSet"/>
-            <parameter key="store_which" value="1"/>
-            <parameter key="remove_from_process" value="true"/>
-          </operator>
-          <operator activated="true" class="apply_model" compatibility="8.1.001" expanded="true" height="82" name="Apply Model (2)" width="90" x="179" y="34">
+          <operator activated="true" class="apply_model" compatibility="8.1.001" expanded="true" height="82" name="Apply Model (2)" width="90" x="313" y="187">
             <list key="application_parameters"/>
             <parameter key="create_view" value="false"/>
           </operator>
           <operator activated="true" class="performance_binominal_classification" compatibility="8.1.001" expanded="true" height="82" name="Performance (2)" width="90" x="313" y="34">
-            <parameter key="main_criterion" value="first"/>
+            <parameter key="main_criterion" value="AUC"/>
             <parameter key="accuracy" value="true"/>
             <parameter key="classification_error" value="false"/>
             <parameter key="kappa" value="false"/>
@@ -546,34 +352,37 @@
             <parameter key="skip_undefined_labels" value="true"/>
             <parameter key="use_example_weights" value="true"/>
           </operator>
-          <connect from_port="model" to_op="Apply Model (2)" to_port="model"/>
-          <connect from_port="test set" to_op="Remember (2)" to_port="store"/>
-          <connect from_op="Remember (2)" from_port="stored" to_op="Apply Model (2)" to_port="unlabelled data"/>
+          <connect from_port="input 1" to_op="k-NN (2)" to_port="training set"/>
+          <connect from_port="input 2" to_op="Apply Model (2)" to_port="unlabelled data"/>
+          <connect from_op="k-NN (2)" from_port="model" to_op="Apply Model (2)" to_port="model"/>
           <connect from_op="Apply Model (2)" from_port="labelled data" to_op="Performance (2)" to_port="labelled data"/>
-          <connect from_op="Performance (2)" from_port="performance" to_port="averagable 1"/>
-          <portSpacing port="source_model" spacing="0"/>
-          <portSpacing port="source_test set" spacing="0"/>
-          <portSpacing port="source_through 1" spacing="0"/>
-          <portSpacing port="sink_averagable 1" spacing="0"/>
-          <portSpacing port="sink_averagable 2" spacing="0"/>
+          <connect from_op="Apply Model (2)" from_port="model" to_port="model"/>
+          <connect from_op="Performance (2)" from_port="performance" to_port="performance"/>
+          <connect from_op="Performance (2)" from_port="example set" to_port="output 1"/>
+          <portSpacing port="source_input 1" spacing="0"/>
+          <portSpacing port="source_input 2" spacing="0"/>
+          <portSpacing port="source_input 3" spacing="0"/>
+          <portSpacing port="sink_performance" spacing="0"/>
+          <portSpacing port="sink_model" spacing="0"/>
+          <portSpacing port="sink_output 1" spacing="0"/>
+          <portSpacing port="sink_output 2" spacing="0"/>
         </process>
       </operator>
       <connect from_op="Read CSV" from_port="output" to_op="Data Preparation" to_port="in 1"/>
-      <connect from_op="Validation" from_port="model" to_op="Multiply" to_port="input"/>
-      <connect from_op="Multiply" from_port="output 1" to_op="Lift Chart (Simple)" to_port="model"/>
-      <connect from_op="Recall" from_port="result" to_op="Lift Chart (Simple)" to_port="test data"/>
-      <connect from_op="Data Preparation" from_port="out 1" to_op="Multiply (2)" to_port="input"/>
-      <connect from_op="Multiply (2)" from_port="output 1" to_op="Outlier Detection" to_port="in 1"/>
-      <connect from_op="Multiply (2)" from_port="output 2" to_op="Detect Outlier (Distances)" to_port="example set input"/>
-      <connect from_op="Detect Outlier (Distances)" from_port="example set output" to_port="result 3"/>
-      <connect from_op="Outlier Detection" from_port="out 1" to_port="result 1"/>
-      <connect from_op="Outlier Detection" from_port="out 2" to_port="result 2"/>
+      <connect from_op="Data Preparation" from_port="out 1" to_op="Outlier Detection" to_port="in 1"/>
+      <connect from_op="Outlier Detection" from_port="out 1" to_op="Split Data" to_port="example set"/>
+      <connect from_op="Split Data" from_port="partition 1" to_op="Optimize Parameters (Grid)" to_port="input 1"/>
+      <connect from_op="Split Data" from_port="partition 2" to_op="Optimize Parameters (Grid)" to_port="input 2"/>
+      <connect from_op="Optimize Parameters (Grid)" from_port="performance" to_port="result 1"/>
+      <connect from_op="Optimize Parameters (Grid)" from_port="model" to_port="result 3"/>
+      <connect from_op="Optimize Parameters (Grid)" from_port="parameter set" to_port="result 2"/>
+      <connect from_op="Optimize Parameters (Grid)" from_port="output 1" to_port="result 4"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
       <portSpacing port="sink_result 3" spacing="0"/>
       <portSpacing port="sink_result 4" spacing="0"/>
-      <description align="center" color="yellow" colored="false" height="293" resized="true" width="474" x="27" y="444">Original processes</description>
+      <portSpacing port="sink_result 5" spacing="0"/>
     </process>
   </operator>
 </process>
