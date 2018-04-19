@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="8.1.000">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="8.1.000" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="retrieve" compatibility="8.1.000" expanded="true" height="68" name="Retrieve Titanic+Data" width="90" x="45" y="34">
+        <parameter key="repository_entry" value="//Local Repository/data/Titanic+Data"/>
+      </operator>
+      <connect from_op="Retrieve Titanic+Data" from_port="output" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <background height="232" location="//Samples/Tutorials/Basics/03/tutorial3" width="1502" x="26" y="47"/>
+    </process>
+  </operator>
+</process>
