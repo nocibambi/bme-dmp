@@ -1,5 +1,5 @@
 # 13. óra
-Adatelemzési Április 10., 7. elméleti óra
+Adatelemzési platformok, Április 10., 7. elméleti óra
 
 # Kombinációs modellek
 

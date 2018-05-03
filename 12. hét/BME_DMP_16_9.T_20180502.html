@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>BME_DMP_16_9.T_20180502</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///C:\Users\noa\.atom\packages\markdown-preview-enhanced\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+ 
+      </style>
+    </head>
+    <body for="html-export" >
+      <div class="mume markdown-preview   "  >
+      <p>Adatelemzési platformok, Május 2., 9. elméleti óra</p>
+<h1 class="mume-header" id="big-data-logika-folytat%C3%A1s">Big data logika folytatás</h1>
+
+<p>Adatelemzős világban van egy pár nem szokványos megoldás programozási szempontból.</p>
+<h2 class="mume-header" id="mapreduce-f%C3%BCggv%C3%A9nyek-formaliz%C3%A1l%C3%A1sa">MapReduce függvények formalizálása</h2>
+
+<p>k, v: kulcs-érték párok</p>
+<table>
+<thead>
+<tr>
+<th>step</th>
+<th>input</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map</td>
+<td>&lt;k1, v1&gt;</td>
+<td>list(&lt;k2, v2&gt;)</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>&lt;k2, list(v2)&gt;</td>
+<td>list(&lt;k3, v3&gt;)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>A k2-höz tartozó összs kulcsnak el kell férnie ugyanazon a gépen, és ezt maga az algoritmus nem tudja automatizálni. Emiatt is fontos, hogy tudjuk, hogy mit csináljunk (e.g. minden tranzakció joinolása saját magával katasztrofális tud lenni, MapReduce-szal együtt is).</li>
+</ul>
+<h3 class="mume-header" id="p%C3%A9lda-1">Példa 1</h3>
+
+<p>'Meta-kód'</p>
+<table>
+<thead>
+<tr>
+<th>step</th>
+<th>input</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map</td>
+<td>&lt;None, txt&gt;</td>
+<td>list(&lt;ch, 1&gt;)</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>&lt;ch, list(1)&gt;</td>
+<td>&lt;ch, count&gt;</td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="p%C3%A9lda-2">Példa 2</h3>
+
+<p>txt line(rowid, year, month, day, city, temp )</p>
+<p>Minden napra próbáljuk megmondani, hogy mi a maximális hőmérséklet.</p>
+<table>
+<thead>
+<tr>
+<th>step</th>
+<th>input</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map</td>
+<td>&lt;rowid, txt&gt;</td>
+<td>list(&lt;year+month+day, temp&gt;)</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>&lt;y+m+d, list(temp)&gt;</td>
+<td>&lt;y+m+d, maxtemp&gt;</td>
+</tr>
+</tbody>
+</table>
+<p>A külön lekérdezések (pl csak Budapesti adatokat szeretnénk) könnyen beépíthetőek a kalkulációba.</p>
+<h3 class="mume-header" id="p%C3%A9lda-3">Példa 3</h3>
+
+<p>Városok átlagos hőmérsélkete</p>
+<table>
+<thead>
+<tr>
+<th>step</th>
+<th>input</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map</td>
+<td>&lt;rowid, txt&gt;</td>
+<td>list(&lt;city+month, temp&gt;)</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>&lt;city+month, list(temp)&gt;</td>
+<td>&lt;city+month, avgtemp&gt;</td>
+</tr>
+</tbody>
+</table>
+<p>Ezek eddig szonylag egyszerűek voltak.</p>
+<h3 class="mume-header" id="p%C3%A9lda-4">Példa 4</h3>
+
+<p>Egyszerű weblog: (date, time, session, url, referrer). Akár már egy közepes méretű oldal esetében is big data problémáról beszélhetünk.</p>
+<p>Kérdés: napi egyedi látogató(session) megállapítása.</p>
+<p>Ezt nem lehet egy MapReduce-szal megoldani, hanem legalább kettővel.</p>
+<h4 class="mume-header" id="i">I.</h4>
+
+<table>
+<thead>
+<tr>
+<th>step</th>
+<th>input</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map</td>
+<td>&lt;None, txt&gt;</td>
+<td>list(&lt;date+session, 1&gt;)</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>&lt;date+session, list(1)&gt;</td>
+<td>&lt;date+session, 1&gt;</td>
+</tr>
+</tbody>
+</table>
+<h4 class="mume-header" id="ii">II.</h4>
+
+<table>
+<thead>
+<tr>
+<th>step</th>
+<th>input</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map</td>
+<td>&lt;date+session, 1&gt;</td>
+<td>list(&lt;date, 1&gt;)</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>&lt;date, list(1)&gt;</td>
+<td>&lt;date, count&gt;</td>
+</tr>
+</tbody>
+</table>
+<p>Ilyen jellegű problémáknál MapReduce sorozatokra van szükség, emiatt az ilyen redszerek nagy része I/O műveletekből áll.</p>
+<h3 class="mume-header" id="p%C3%A9lda-5">Példa 5</h3>
+
+<p>A példa 4-beli session-ökhüz szeretnénk még joinolni egy user_id-t is.</p>
+<h4 class="mume-header" id="reduce-side-join">Reduce-side join</h4>
+
+<table>
+<thead>
+<tr>
+<th>step</th>
+<th>input</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map</td>
+<td>&lt;rowid, txt&gt;</td>
+<td>list(&lt;session, R/L + txt&gt;)</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>&lt;session, list(R/L + txt)&gt;</td>
+<td>&lt;session, txt+user_id&gt;</td>
+</tr>
+</tbody>
+</table>
+<h4 class="mume-header" id="map-side-join">Map-side join</h4>
+
+<p>Ha a bemeneti adat befér a memóriába</p>
+<table>
+<thead>
+<tr>
+<th>step</th>
+<th>input</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map</td>
+<td>&lt;rowid, txt&gt;</td>
+<td>list(&lt;session, join_txt&gt;)</td>
+</tr>
+</tbody>
+</table>
+<p>Itt nincs reduce.</p>
+<h3 class="mume-header" id="alkalmaz%C3%A1s-t%C3%B6rt%C3%A9net">Alkalmazás-történet</h3>
+
+<p>Ezeket a MapReduce-okat főleg Java-ban kellett megírni, elég bonyolultak voltak, a 'végfelhasználó' SQL query-ket tudott lefuttatni.</p>
+<ul>
+<li>Mai SQL feldolgozó technológiák:
+<ul>
+<li>Impala</li>
+<li>vmi másik?</li>
+</ul>
+</li>
+<li>Ma már zippelt txt-ben tárolják ezeket az adatokat</li>
+<li>Oszlop alapú tárolást hajtanak végre (e.g. parquet?), és az oszlopokhoz nagyon gyorsan tudnak statisztikai lekérdezéseket gyártani (sőt ezeket előre le is tárolják sokszor).</li>
+<li>Update szinte soha nincs támogatva, erős az adattárház szemlélet.</li>
+</ul>
+<h2 class="mume-header" id="spark">Spark</h2>
+
+<h3 class="mume-header" id="mapreduce-probl%C3%A9m%C3%A1i">MapReduce problémái</h3>
+
+<ol>
+<li>Az iteratív lekérdzésekben nagyon rossz</li>
+<li>Nem lehetett egymásra épülő feladatokat hatékonyan végezni benne</li>
+<li>Alapvetően batch feldolgozásra találták ki, és ezért a nagyon gyors kis lekérdezéseket is nagyon lassan csinálta</li>
+</ol>
+<h3 class="mume-header" id="a-spark-megold%C3%A1sai">A Spark megoldásai</h3>
+
+<ul>
+<li>Lehet a MapReduce felett és attól függetlenül is futtatni</li>
+<li>Memória-alapú: sokkal több adatot tudsz feldolgozni, mint ami befér a memóriába, de ennek a folyamatát ő menedzseli
+<ul>
+<li>Emiatt viszont nem lehet debuggolni</li>
+<li>Nem tudjuk, hogy milyen sorrendben hajtja végre a feladatokat</li>
+</ul>
+</li>
+<li>Van SQL interfésze</li>
+<li>Van streaming</li>
+<li>Van Machine Learning (ez főleg marketing, illetve arra jó, hogy ne kelljen környezetet váltani)</li>
+<li>Gráf-feldolgozó</li>
+<li>Java, Scala, Python (PySpark) (esetleg R-ben is)</li>
+</ul>
+<h4 class="mume-header" id="kit%C3%A9r%C5%91-big-data-%C3%A9s-machine-learning-k%C3%B6z%C3%B6tti-viszony">Kitérő: Big data és machine learning közötti viszony</h4>
+
+<table>
+<thead>
+<tr>
+<th>Data preparation</th>
+<th>Machine Learning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>small</td>
+<td>small</td>
+</tr>
+<tr>
+<td>big</td>
+<td>small (sima ügyfél-szintű adat)</td>
+</tr>
+<tr>
+<td>big</td>
+<td>big</td>
+</tr>
+<tr>
+<td>?</td>
+<td>deep learning (nem big data féle párhuzamosítás )</td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="rdd-resilient-distributed-dataset">RDD: Resilient Distributed Dataset</h3>
+
+<ul>
+<li>Egy objektum <strong>bármilyen</strong> egyöntetű dolog lehet.</li>
+<li>Bármilyne hosszú lehet (pl lehet akár egy Hadoop adatforrás is)</li>
+<li>Nem lehet átírni benne semmit, helyette:
+<ul>
+<li>&quot;Transformation&quot; (RDD -&gt; RDD): Gyárt egy új RDD-t
+<ul>
+<li><code>filter</code></li>
+<li><code>map()</code>: minden egyes objektumból egy darab objektumot csinál</li>
+<li><code>flatmap()</code>: több értékpárt is tud gyáratani egy objektumból</li>
+<li><code>reduceByKey()</code>: nem az egész adathalmazból próbál dolgozni, hanem előbb két sort von össze, aztán azok eredményeit használja, stb, v1, v2 -&gt; v3</li>
+<li>Az RDD nem létezik fizikailag, hanem egy logikai érték</li>
+</ul>
+</li>
+<li>&quot;Action&quot; (RDD -&gt; más formátum):
+<ul>
+<li>pl: <code>toTXT</code>, <code>take(5)</code>, <code>collect()</code></li>
+<li>Addig nem történik semmi, amíg le nem futtatunk egy Action-t</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Köv héten ezeket gyakoroljuk.</p>
+
+      </div>
+      
+      
+    </body>
+    
+    
+    
+    
+    
+    
+    
+  </html>
