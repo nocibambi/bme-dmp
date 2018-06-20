@@ -100,9 +100,9 @@ SSW = \sum_{i = 1}^{k}\sum_{j = 1}^{n_j}(x_{ij} - \bar{x}_i)^2
 ```
 * $ SSW $ = Sum of squares within
 * $ k $ = Klaszterek száma
-* $ n_i $ = Klaszter tagjainak száma
-* $ x_i $ = Klaszter tagjainak átlaga
+* $ n_j $ = Klaszter tagjainak száma
 * $ x_{ij} $ = Klaszterre vonatkozó mérés
+* $ \bar{x}_i $ = Klaszter tagjainak átlaga
 
 Olyan klasztereket próbálunk csinálni, amelyekben a klaszterek elemei közötti távolság minimális.
 
@@ -111,12 +111,12 @@ Olyan klasztereket próbálunk csinálni, amelyekben a klaszterek elemei közöt
 1. Meghatározuuk a $ k $ értékét.
 2. Véletlenszerűen kialakítunk $k$ darab pontot, és elnevezzük őket a klaszterek középpontjának.
 3. Minden egyes pontot besorolunk egy középponthoz, amelyhez a távolsága a legkisebb. Ez kialakítja a klasztereinket.
-4. Új klaszterközéppontot hozunk létre.
+4. Új klaszterközéppontot hozunk létre. [Mi alapján?]
 5. Iteráljuk a 3. és 4. pontokat.
 
 ### Leállási feltételek
 1. Nem változik a pontok klaszterbesorolása.
-2. Az előző kritérium puhítása: leáll, ha már csak egy csekély mennyiségű klaszter változik.
+    1. Az előző kritérium puhítása: leáll, ha már csak egy csekély mennyiségű klaszter változik.
 3. SSW távolságfüggvény minimális.
 4. Általunk megadott iteráció után.
 
@@ -150,9 +150,9 @@ SSW = \sum_{i = 1}^{k}\sum_{j = 1}^{n_j}(x_{ij} - \bar{x}_i)^2
 
 * $ SSW $ = Sum of squares within
 * $ k $ = Klaszterek száma
-* $ n_i $ = Klaszter tagjainak száma
-* $ x_i $ = Klaszter tagjainak átlaga
+* $ n_j $ = Klaszter tagjainak száma
 * $ x_{ij} $ = Adott klaszterre vonatkozó mérés
+* $ \hat{x}_i $ = Klaszter tagjainak átlaga
 
 
 #### SSB: klaszterek közötti  távolság
@@ -181,7 +181,7 @@ Az SSB/SST könyökpontjánál érdemes a k értékét meghatározni (inflexiós
 ### Davies Bouldin index
 Visszamérési függvényt
 ```math
-R_{i,j} = \frac{S_i + S_j} {M_{i, j}} =
+R_{i,j} = \frac{S_i + S_j} {M_{i, j}}
 ```
 Ahol:
 * $ R_{i,j} $ = A klaszterezés 'jósága'
@@ -225,6 +225,6 @@ Egy dimnezió
 
 * A fenti teljesítményfüggvényeket lehet használni
 * Lánc alakú klasztereket képez
-* Ha egy lépést megtettünk, az a lépés már nem fog változni. Nem biztos, hogy értelmesek lesznek a klaszterek.
+* Ha egy lépést megtettünk, az a lépés már nem fog változni. Nem biztos, hogy értelmesek lesznek a klaszterek. Klaszterezésnek és felügyelet nélküli tanításnak ez egy nagy problémája, ezért is ritka.
 
-Klaszterezésnek és felügyelet nélküli tanításnak ez egy nagy problémája, ezért is ritka. Hüvejkujjszabályként, az a jó klaszterezés, amely eredményeként a klasztereknek maximum egy egymondatos nevet tudunk adni. Ez azt sugallja, hogy valami erősen jellemző rájuk, tehát valószínüleg van értelmük.
+Hüvejkujjszabályként az a jó klaszterezés, amely eredményeként a klasztereknek maximum egy egymondatos nevet tudunk adni. Ez azt sugallja, hogy valami erősen jellemző rájuk, tehát valószínüleg van értelmük.

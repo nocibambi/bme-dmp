@@ -39,7 +39,7 @@ Profit az egyes esettípusokhoz:
 A görbén a konfidencia alapján sorbarendezett esetekhez tartozó profitot kumulálva elkezdjük felírni a profitokat.
 * A görbe alakja függ a nyereség és költség egymáshoz képesti arányától is
 
-# Pédányalapú osztályozók
+# Példányalapú osztályozók
 ## KNN (K-Legközelebbi szomszéd)
 * A kapcsolódó model nem a k-means (klaszterezés), hanem k-neighbors (outlier keresés)!
 

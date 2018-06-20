@@ -29,7 +29,7 @@ Két főbb fajtája van
     - átlaga: 0
     - szórása: 1
     - Az értéktartománya: $-\infty/+\infty$
-    - Normálelszolás esetén majdnem mindig a +/-3 szórás tartományba esik, de itt nem tudunk semmit az eloszlásról
+    - Normáleloszolás esetén majdnem mindig a +/-3 szórás tartományba esik, de itt nem tudunk semmit az eloszlásról
 
 Normalizálás után már mások az együttható súlyok
 * konfidencia(0,0): nullának mekkora a valószínüsége

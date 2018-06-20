@@ -22,7 +22,7 @@ Principal Component Analysis, Főkomponens analízis
 1. Egy jó dimenziónak ($PC_1$) a lehető legnagyobb varianciája van (kb. mint egy átló): $ \omega_{PC_1} > \omega_{x_1} > \omega_{x_2} $
 2. A következő dimenzió merőleges az elsőre.
 
-Az új dimenziók az eredetiek lineáris transzormációi lesznek:
+Az új dimenziók az eredetiek lineáris transzformációi lesznek:
 1. dimenzió: $a_1 x_1  + b_1 x_2 $
 2. dimenzió: $a_2 x_1  + b_2 x_2 $
 
@@ -64,9 +64,9 @@ Logisztikus regresszió: három új változót ad az adathalmazhoz
 
 ## Becslés pontossága
 ### $ R^2 $
- $ SS_{ERR} = \sum({y_i - f_i})^2 $, pontoknak az egyenstől vett távolságnégyzeteinek összege.
+ $ SS_{ERR} = \sum({y_i - f_i})^2 $, pontoknak az egyenestől vett távolságnégyzeteinek összege.
 
- $ SS_{TOT} = \sum({y_i - \bar{y_i}})^2 $, a pontoknak az átlaguktól való eltéréseik négyzetösszege.
+ $ SS_{TOT} = \sum({y_i - \bar{y_i}})^2 $, a pontoknak az átlagtól való eltéréseik négyzetösszege.
 
 ```math
 R^2 = 1 - \frac {SS_{ERR}} {SS_{TOT}}
@@ -92,7 +92,7 @@ Meghatározzuk, hogy melyik értéket próbáljuk elsősorban meghatározni
 #### Tévesztési mátrix
 Dimenziók
   * Valós értékek
-  * Előrejelzési értékek=
+  * Előrejelzési értékek
 
 Előrejelzési\Valós értékek| 1  | 0
 --------------------------|----|--
@@ -108,7 +108,7 @@ Esetek
 A fontos belátás, hogy nem egyenrangúak a hibák egymással (leginkább alkalmazási szempontból). Például, nem mindegy, hogy hogyan értelmezzük, hogy adjunk-e hitelt, vagy tényleg beteg-e valaki, stb.
 
 #### A ROC görbe felépítése
-Tréning adathalmaz:
+Tréning adathalmaz: [?]
 Teszt adathalmaz: Az eredeti célváltozó mellé teszi a következőket:
  1. Becsült érték
  2. Confidenciát  [0,1] a primary outcome-hoz ($ P_0 $)
@@ -146,10 +146,10 @@ AUC érték összefoglalja, hogy mennyire jó a sorbarendezésünk:
  * Véletlen: 0.5
 
 #### Amikor a döntési modell rosz, de a sorbarendezés jó
- * Logisztikus regresszió egy valószínűség felett rendeli hozzá a becsült változót az esethez.
+ * Logisztikus regresszió egy adott valószínűség felett rendeli hozzá a becsült változót az esethez.
  * Mekkora valószínűséggel jelzi előre a $ P_0 $-t -et [de itt van valmi kavar, azzal kapcsolatban, hogy hogyan értelmezzük az egy dimenzióra vonatkozó előrejelzési koefficienst]
 
-#### Nem kategóriákkal, hanem lépegetve vizalizálva a ROC görbét
+#### Nem kategóriákkal, hanem lépegetve vizualizálva a ROC görbét
  1. ha 1-est jelez előre: fel lép
  1. ha 0-ást jelez előre: jobbra lép
 [vagy pont fordítva?]
@@ -157,4 +157,4 @@ AUC érték összefoglalja, hogy mennyire jó a sorbarendezésünk:
 Egy lépés nagysága pedig megyezik 1-esek, 0-ások viszonylagos mennyiségével.
 
 #### GINI érték
-GINI = 2 (AUC -  0,5)
+GINI = 2 * (AUC -  0,5)

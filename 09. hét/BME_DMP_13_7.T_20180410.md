@@ -3,21 +3,19 @@ Adatelemzési platformok, Április 10., 7. elméleti óra
 
 # Kombinációs modellek
 
-Példa: osztályozási fa 25 féleképpen lehet megoldani, hiba: /epsilon = 0.35.
+Példa: osztályozási fa 25 féleképpen lehet megoldani, hiba: $\epsilon = 0.35$.
 
-1. Azt hisszük el amit a többségük mond: de ez nem nagyon javít a döntésben. Ha függenek egymástól az eredmények akkor a közös eredmény is e = 0.35.
+Azt hisszük el amit a többségük mond: de ez nem nagyon javít a döntésben. Ha függenek egymástól az eredmények akkor a közös eredmény is $\epsilon = 0.35 $.
 
 
 Mi van ha függetlenek egymástól?
 * Hibást esetek: i = 13
-* $ e = \sum_{25}^{i=13}  {25}{alatt}{i} e^i (1-e)^{(25-i)} = 0.06 $
-
-(1 - epszilon) / e függvény
+* $ \epsilon = 0.06 $
 
 ## Feltételezések
 
 
-* F1: Véltelennél jobb model: epsilon < 0.5
+* F1: Véltelennél jobb model: $\epsilon < 0.5$
 * F2: Független modelleket szeretnénk, de ez gyakorlatilag kb lehetetlen. Legalább legyenek korrelálatlanak.
 
 Weak learner:
@@ -34,10 +32,10 @@ Weak learner:
 D adathalaz, amiből létrehozunk T darab D_{1..T} adathalmazt C_{1..T} célváltozóval. A kérdés, hogy hogyan kapjuk meg a közös C^* osztályozást.
 
 1. Tanító halmaz manipulációk: Különböző adatokat néznek.
-    - Bagging:
-    - Boosting:
-2. Bemenet attribútomait manipuláljuk: Különböző attribútomokra végezünk különböző méréseket.
-    - Random forest algoritmus
+    - Bagging
+    - Boosting
+2. Bemenet attribútumait manipuláljuk: Különböző attribútomokra végezünk különböző méréseket.
+    - Random forest algorithm
 3. Osztálycimkék manipulálása
     * Sokosztály -> bináris osztályozás
     * Véletlenszerűen szétválasztjuk a csoportokat

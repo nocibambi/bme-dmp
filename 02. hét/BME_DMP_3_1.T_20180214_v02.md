@@ -30,7 +30,7 @@ De ezek nem annyira egyértelműek
  * Adattípus: nominális, polinominális, numerikus, természetes, binominális stb.
  * Adatszerep: célváltozó, azonosító, stb.
 
-Sokféle adatot nem egyértelmű, hogy hogyan rögzítünk és használunk.
+Sokféle adat esetében nem egyértelmű, hogy hogyan rögzítsük és hasznájuk őket.
 
 ### Credit scoring vizsgálati módok
 * Application credit scoring: Az ügyfél által, a hitelkérelemmel kapcsolatban megadott adatokat tudjuk.

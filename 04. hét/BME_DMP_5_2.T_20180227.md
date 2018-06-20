@@ -49,7 +49,7 @@ Egy olyan egyenest próbálunk találni, ami esetében a ponthalmaztól vett né
 ```math
 \bar{y} = \omega_o + \sum_i{\omega_i * x_i }
 ```
-* Ez egy hipersíkot vázol fel [bár erről volt egy vita, hogy nem csak-e egy egyenest]
+* Ez egy hipersíkot vázol fel [bár erről volt egy vita, hogy nem csak egy egyenest-e]
   - Hipersíkot leginkább lineáris szeparálás esetén használjuk, ahol egy osztályozási problémát oldunk meg.
   - Itt egy darab célváltozóhoz egy vektor tartozik.
 
@@ -60,7 +60,7 @@ A logisztikus regressziónál: logit transzformációt végeztünk, itt nincs il
 
 Itt a kimenet numerikus lesz
 * Egy olyan hipersíkot/egyenest keresünk, amitől a pontok szórása minimális.
-* CV-t és PCV-t(?) hasonlítjuk össze
+* CV-t és PCV-t hasonlítjuk össze
 
 Alapvetően a lineáris regresszió a négyzetes hibára optimalizál, viszont a visszamérési függvényeket elsősorban az üzleti célok tekintetében kell meghatározni, ezért használunk másokat is.
 
@@ -80,9 +80,10 @@ MAD: Mean absolute deviation
 ```math
 MAD = \frac{\sum_{i = 1}^n{|(y_i - \hat {y}_i)|}}{n}
 ```
-[Itt volt még egy]
 
 Ez akkor használható, ha nem az egyes sorok szerinti pontosság a fontos, hanem az összesített becsülhetőség. Ilyen példa az energia kereskedés, ahol elsősoraban a keresletet és a kínálatot kell kiegyenlíteni, és nem az egyiket kell növelni.
+
+[Itt volt még egy]
 
 #### 3. RMSE
 Root mean square error
